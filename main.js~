@@ -1,0 +1,33 @@
+console.log('ready');
+
+$(document).ready(function(){
+	var c=document.getElementById("canvas");
+	var ctx=c.getContext("2d");
+	ctx.fillStyle="#FF0000";
+	function log(){
+		console.log('log');
+	}
+
+	var M = { x: 0, y: 0 };
+	$(document).on('mousemove mouseover click',function(event) {
+		M.x = event.pageX;
+		M.y = event.pageY;
+console.log('q');
+	});
+	$('#canvas').on('mousemove mouseover click',function(event) {
+		M.x = event.pageX;
+		M.y = event.pageY;
+console.log('q');
+	});
+	var inter;
+	inter = $('#canvas').on('mousedown',function(e){
+		//ctx.fillRect(x,y,width,height);
+		clearInterval(inter);
+		setInterval(function(){
+			ctx.fillRect(M.x,M.y,2,2);
+		},0.01);
+	});
+	$('body').on('mouseup',function(e){
+		clearInterval(inter);
+	});
+});
