@@ -3,11 +3,13 @@
 var express = require('express');
 var hbs = require('hbs');
 var io = require('socket.io');
-
+var fs=require('fs');
 var app = express();
+var ports = JSON.parse(fs.readFileSync('/home/ubuntu/web_apps/CORE/apps.json'))['pixalbucket.com'];
 
-app.listen(16912);   //listen on port, default localhost
-io = io.listen(15224);
+
+app.listen(ports.port);   //listen on port, default localhost
+io = io.listen(ports.ws_port);
 
 app.set('view engine','html');
 app.set('views', __dirname);

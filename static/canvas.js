@@ -59,7 +59,7 @@ $(document).ready(function(){
     
 });
 
-var socket = io.connect('http://pixalbucket.com', {port:15224});
+var socket = io.connect('pixalbucket.com', {port:9001});
 
 socket.on('connect', function(){
     console.log('your connected nice wow.');
